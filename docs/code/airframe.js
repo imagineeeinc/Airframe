@@ -23,7 +23,16 @@ SOFTWARE.
 */
 
 
+/*
 
+template function: 
+
+(function (ele) {
+    'use strict';
+    return function
+})
+
+*/
 //DOM Traversal
 const doc = {
     doc: (function (ele) {
@@ -81,6 +90,83 @@ const selecall = (function (ele) {
     'use strict';
     return document.querySelectorAll(ele)
 })
+
+
+
+//DOM manupilation
+const append = (function (ele, html) {
+    'use strict';
+    ele.append(html)
+})
+const prepend = (function (ele, html) {
+    'use strict';
+    ele.prepend(html)
+})
+
+
+const fadeout = (function (ele) {
+    'use strict';
+    var op = 1;
+    var timer = setInterval(function () {
+        if (op <= 0.1){
+            clearInterval(timer);
+            ele.style.display = 'none';
+        }
+        ele.style.opacity = op;
+        ele.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op -= op * 0.1;
+    }, 10);
+})
+const fadein = (function (ele) {
+    'use strict';
+    var op = 0.1;  // initial opacity
+    ele.style.display = 'block';
+    var timer = setInterval(function () {
+        if (op >= 1){
+            clearInterval(timer);
+        }
+        ele.style.opacity = op;
+        ele.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, 10);
+})
+
+const fadeinspeed = (function (ele, speed) {
+    'use strict';
+    var op = 0.1;  // initial opacity
+    ele.style.display = 'block';
+    var timer = setInterval(function () {
+        if (op >= 1){
+            clearInterval(timer);
+        }
+        ele.style.opacity = op;
+        ele.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, speed);
+})
+const fadeoutspeed = (function (ele, speed) {
+    'use strict';
+    var op = 1;
+    var timer = setInterval(function () {
+        if (op <= 0.1){
+            clearInterval(timer);
+            ele.style.display = 'none';
+        }
+        ele.style.opacity = op;
+        ele.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op -= op * 0.1;
+    }, speed);
+})
+//eventlistenrs
+const evelis = (function (ele, type, callback) {
+    'use strict';
+    ele.addEventListener(type, callback)
+})
+const remevelis = (function (ele, type, callback) {
+    'use strict';
+    ele.removeEventListener(type, callback)
+})
+
 
 
 //Console

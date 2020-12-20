@@ -20,6 +20,14 @@ hr {
 }
 pre {
     margin: 25px;
+    overflow-x: auto;
+    /*white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;*/
+    word-wrap: break-word;
+    background-color: lightgrey;
+    padding: 20px 10px 20px 10px;
 }
 article {
     border-left: 3px solid grey;
@@ -27,7 +35,7 @@ article {
 }
 code {
     background-color: lightgrey;
-    padding: 20px;
+    padding: 20px 10px 20px 10px;
 }
 a {
     text-decoration: none;

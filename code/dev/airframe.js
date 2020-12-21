@@ -82,90 +82,128 @@ const win = (function () {
     var txr = window
     return txr
 })
-const selec = (function (ele) {
-    'use strict';
-    return document.querySelector(ele)
-})
-const selecall = (function (ele) {
-    'use strict';
-    return document.querySelectorAll(ele)
-})
 
 
 
-//DOM manupilation
-const append = (function (ele, html) {
-    'use strict';
-    ele.append(html)
-})
-const prepend = (function (ele, html) {
-    'use strict';
-    ele.prepend(html)
-})
-
-
-const fadeout = (function (ele) {
-    'use strict';
-    var op = 1;
-    var timer = setInterval(function () {
-        if (op <= 0.1){
-            clearInterval(timer);
-            ele.style.display = 'none';
+//dom select selector
+var dom = function(selector) {
+    function cons(ele) {
+        this.selector = document.querySelector(selector) || null;
+        this.element = null;
+    }
+    /* template: 
+    cons.prototype.func_name = function (parms) {
+        'use strict';
+        //this.selector is baisicly the document.querySelector()
+        this.selector.whatever(parms)
+        //this is for the chainable functions
+        return this
+    }
+    */
+    //append
+    cons.prototype.append = function(html) {
+        'use strict';
+        this.selector.append(html)
+        return this
+    }
+    //prepend
+    cons.prototype.prepend = function (html) {
+        'use strict';
+        this.selector.prepend(html)
+        return this
+    }
+    //innerHTML
+    cons.prototype.html = function(html) {
+        if (html === undefined) {
+        return this.element.innerHTML;
         }
-        ele.style.opacity = op;
-        ele.style.filter = 'alpha(opacity=' + op * 100 + ")";
-        op -= op * 0.1;
-    }, 10);
-})
-const fadein = (function (ele) {
-    'use strict';
-    var op = 0.1;  // initial opacity
-    ele.style.display = 'block';
-    var timer = setInterval(function () {
-        if (op >= 1){
-            clearInterval(timer);
-        }
-        ele.style.opacity = op;
-        ele.style.filter = 'alpha(opacity=' + op * 100 + ")";
-        op += op * 0.1;
-    }, 10);
-})
+        this.selector.innerHTML = html;
+        return this
+    };
+    //addClass
+    cons.prototype.addclass = function(clas) {
+        this.selector.classList.add(clas);
+        return this
+    }
+    //fadeout
+    cons.prototype.fadeout = function () {
+        'use strict';
+        var ele = this.selector
+        var op = 1;
+        var timer = setInterval(function () {
+            if (op <= 0.1){
+                clearInterval(timer);
+                ele.style.display = 'none';
+            }
+            ele.style.opacity = op;
+            ele.style.filter = 'alpha(opacity=' + op * 100 + ")";
+            op -= op * 0.1;
+        }, 10);
+        return this
+    }
+    //fadein
+    cons.prototype.fadein = function () {
+        'use strict';
+        var ele = this.selector
+        var op = 0.1;  // initial opacity
+        ele.style.display = 'block';
+        var timer = setInterval(function () {
+            if (op >= 1){
+                clearInterval(timer);
+            }
+            ele.style.opacity = op;
+            ele.style.filter = 'alpha(opacity=' + op * 100 + ")";
+            op += op * 0.1;
+        }, 10);
+        return this
+    }
+    //fadeoutspeed
+    cons.prototype.fadeoutspeed = function (speed) {
+        'use strict';
+        var ele = this.selector
+        var op = 1;
+        var timer = setInterval(function () {
+            if (op <= 0.1){
+                clearInterval(timer);
+                ele.style.display = 'none';
+            }
+            ele.style.opacity = op;
+            ele.style.filter = 'alpha(opacity=' + op * 100 + ")";
+            op -= op * 0.1;
+        }, speed);
+        return this
+    }
+    //fadeinspeed
+    cons.prototype.fadeinspeed = function (speed) {
+        'use strict';
+        var ele = this.selector
+        var op = 0.1;  // initial opacity
+        ele.style.display = 'block';
+        var timer = setInterval(function () {
+            if (op >= 1){
+                clearInterval(timer);
+            }
+            ele.style.opacity = op;
+            ele.style.filter = 'alpha(opacity=' + op * 100 + ")";
+            op += op * 0.1;
+        }, speed);
+        return this
+    }
+    //addeventlistener
+    cons.prototype.evelis = function (type, callback) {
+        'use strict';
+        this.selector.addEventListener(type, callback)
+        return this
+    }
+    //removeeventlisener
+    cons.prototype.remevelis = function (type, callback) {
+        'use strict';
+        this.selector.removeEventListener(type, callback)
+        return this
+    }
+    return new cons(selector)
+};
 
-const fadeinspeed = (function (ele, speed) {
-    'use strict';
-    var op = 0.1;  // initial opacity
-    ele.style.display = 'block';
-    var timer = setInterval(function () {
-        if (op >= 1){
-            clearInterval(timer);
-        }
-        ele.style.opacity = op;
-        ele.style.filter = 'alpha(opacity=' + op * 100 + ")";
-        op += op * 0.1;
-    }, speed);
-})
-const fadeoutspeed = (function (ele, speed) {
-    'use strict';
-    var op = 1;
-    var timer = setInterval(function () {
-        if (op <= 0.1){
-            clearInterval(timer);
-            ele.style.display = 'none';
-        }
-        ele.style.opacity = op;
-        ele.style.filter = 'alpha(opacity=' + op * 100 + ")";
-        op -= op * 0.1;
-    }, speed);
-})
-//eventlistenrs
-const evelis = (function (ele, type, callback) {
-    'use strict';
-    ele.addEventListener(type, callback)
-})
-const remevelis = (function (ele, type, callback) {
-    'use strict';
-    ele.removeEventListener(type, callback)
-})
 
 
 

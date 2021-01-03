@@ -1,21 +1,16 @@
 <header style="text-align: center;">
-        <img src="img/airframe.svg" style="width: 50%;">
         <h1>Airframe</h1>
-        </header>
-        <hr>
+</header>
         <p>
             Airframe is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, and console.loging easy.
         </p>
-        <hr>
         <p>
             <h2>🧳 Super Light</h2>
             Light as 5kb minified.
         </p>
-        <hr>
         <article>
             <b>Documentation coming soon...</b>
         </article>
-        <hr>
         <h2>Take brief look</h2>
         <p>
             <article>
@@ -27,7 +22,6 @@
                 <pre><code>con.log("Hello from airframe")</code></pre>
             </article>
         </p>
-        <hr>
         <p>
             <h2>Install</h2>
             Install in your website by:
@@ -83,10 +77,6 @@
         </p>
         <hr>
         <footer style="text-align: center;">
-            <p><img src="/icon/user.png" style="width: 35px; border-radius: 75px; border: 1px solid lightgrey;"></p>
             <p>©<script>document.write(new Date().getFullYear())</script></p>
             <a href="https://github.com/imagineeeinc">Imagineee</a>
-        </footer>   
-        <script src="app.js"></script>
-    </body>
-</html>
+        </footer>

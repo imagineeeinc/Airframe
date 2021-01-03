@@ -77,6 +77,5 @@
         </p>
         <hr>
         <footer style="text-align: center;">
-            <p>©<script>document.write(new Date().getFullYear())</script></p>
             <a href="https://github.com/imagineeeinc">Imagineee</a>
         </footer>
